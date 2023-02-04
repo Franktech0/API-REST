@@ -3,6 +3,7 @@ const express = require('express'); //cargamos el modulo expressJS
 const mogoose = require("mongoose");//cargamos el modulo mongoose para la conexxion a ala base de datos
 require("dotenv").config();
 const userRoutes = require("./routes/user");
+const studentRoutes = require("./routes/student");
 
 const app = express();//aplicacion
 const port = process.env.PORT ||9000;//si se despliga en un servidor externo toma su puerto sino, ocupa el 9000
@@ -10,6 +11,7 @@ const port = process.env.PORT ||9000;//si se despliga en un servidor externo tom
 //middleware //codigo antes de abrir el cuerpo del api
 app.use(express.json());
 app.use("/api", userRoutes);
+app.use("/api", studentRoutes);
 
 //routes 
 app.get("/", (req, res)=>{

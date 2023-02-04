@@ -1,9 +1,9 @@
 ###
-POST http://localhost:9000/api/users HTTP/1.1
+POST http://localhost:9000/api/students HTTP/1.1
 Content-Type: application/json
 
 {
-    "name": "luis",
-    "age": "22",
-    "email": "luisf@email"
+    "name": "luis Francisco",
+    "age": "23",
+    "active": "true"
 }
