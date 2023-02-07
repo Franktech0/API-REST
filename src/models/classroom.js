@@ -17,10 +17,10 @@ const ClassRoomSchema = mongoose.Schema({
         type: Boolean,
         required: true
     },
-    students: {
-        type: Array,
+    ListStudents: {
+        type: Number,
         required: true
     }
 });
 
-module.exports = mongoose.model("ClassRoom", ClassRoomSchema);
+module.exports = mongoose.model("classroom", ClassRoomSchema);
