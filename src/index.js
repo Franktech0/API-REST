@@ -4,6 +4,7 @@ const mogoose = require("mongoose");//cargamos el modulo mongoose para la conexx
 require("dotenv").config();
 const userRoutes = require("./routes/user");
 const studentRoutes = require("./routes/student");
+const classRoomRoutes = require("./routes/classroom");
 
 const app = express();//aplicacion
 const port = process.env.PORT ||9000;//si se despliga en un servidor externo toma su puerto sino, ocupa el 9000
@@ -12,6 +13,7 @@ const port = process.env.PORT ||9000;//si se despliga en un servidor externo tom
 app.use(express.json());
 app.use("/api", userRoutes);
 app.use("/api", studentRoutes);
+app.use("/api", classRoomRoutes);
 
 //routes 
 app.get("/", (req, res)=>{
