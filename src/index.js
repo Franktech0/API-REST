@@ -13,7 +13,7 @@ const app = express();//aplicacion
 const port = process.env.PORT ||9000;//si se despliga en un servidor externo toma su puerto sino, ocupa el 9000
 
 //solucionnado porblemas de cors
-app.use(cors());
+app.use(cors());//permitimos cualquir origen
 
 
 //middleware //codigo antes de abrir el cuerpo del api
