@@ -5,9 +5,16 @@ require("dotenv").config();
 const userRoutes = require("./routes/user");
 const studentRoutes = require("./routes/student");
 const classRoomRoutes = require("./routes/classroom");
+const cors = require('cors');
+
+
 
 const app = express();//aplicacion
 const port = process.env.PORT ||9000;//si se despliga en un servidor externo toma su puerto sino, ocupa el 9000
+
+//solucionnado porblemas de cors
+app.use(cors());
+
 
 //middleware //codigo antes de abrir el cuerpo del api
 app.use(express.json());
@@ -19,6 +26,7 @@ app.use("/api", classRoomRoutes);
 app.get("/", (req, res)=>{
     res.send("bienvenido a mi API");
 });
+
 
 //conexion a mongodb
 mogoose

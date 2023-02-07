@@ -32,9 +32,32 @@ POST http://localhost:9000/api/classrooms HTTP/1.1
 Content-Type: application/json
 
 {
-    "Class": "Biología",
-    "Order": 1,
-    "numberOfStudents": 25,
+    "Class": "Algebra Lineal",
+    "Order": 4,
+    "numberOfStudents": 30,
     "active": "1",
-    "ListStudents": 2
+    "ListStudents": 4
 }
+
+
+###
+GET http://localhost:9000/api/classrooms HTTP/1.1
+
+###
+GET http://localhost:9000/api/classrooms/63e1ba8873c4a89a02cc3aad HTTP/1.1
+
+###
+
+PUT http://localhost:9000/api/classrooms/63e1ba8873c4a89a02cc3aad HTTP/1.1
+Content-Type: application/json
+
+{
+    "Class": "Algebra Lineal",
+    "Order": 4,
+    "numberOfStudents": 30,
+    "active": "0",
+    "ListStudents": 4
+}
+
+###
+DELETE http://localhost:9000/api/classrooms/63e1ba8873c4a89a02cc3aad HTTP/1.1
