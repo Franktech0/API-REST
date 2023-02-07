@@ -3,7 +3,26 @@ POST http://localhost:9000/api/students HTTP/1.1
 Content-Type: application/json
 
 {
-    "name": "luis Francisco",
-    "age": "23",
-    "active": "true"
+    "name": "Chabelo",
+    "age": "89",
+    "active": "1"
 }
+
+###
+GET http://localhost:9000/api/students HTTP/1.1
+
+###
+GET http://localhost:9000/api/students/63e1ad646e9901962a5d6182 HTTP/1.1
+
+###
+
+PUT http://localhost:9000/api/students/63e1ad646e9901962a5d6182 HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "Xavier Lopez",
+    "age": 89,
+    "active": "1"
+}
+###
+DELETE http://localhost:9000/api/students/63e1abaabc73443dab92ce85 HTTP/1.1
