@@ -1,23 +1,47 @@
 //const classroom = require("./models/classroom");
+const formulario = document.querySelector('#formulario');
+const Class = document.querySelector('#class');
+const Order = document.querySelector('#order');
+const numberOfStudents = document.querySelector('#numberofstudents');
+const active = document.querySelector('#active');
+const ListStudents = document.querySelector('#liststudents');
+const Agregar = document.querySelector('#agregar');
 
 const API_URL = "http://localhost:9000/api/";
 
-const HTMLResponse = document.querySelector("#app");
-const ul = document.createElement('ul');
 
+formulario.addEventListener('submit', validarFormuario);
 
-fetch(`${API_URL}/classrooms`).then((response) => response.json()
-.then((classrooms) => {
-    classrooms.forEach(classrooms => {
-        let elem = document.createElement('li');
-        elem.appendChild(document.createTextNode(`${classrooms.Class} ||| ${classrooms.Order} ||| ${classrooms.numberOfStudents} ||| ${classrooms.active} ||| ${classrooms.ListStudents}`))
-        ul.appendChild(elem);
-    });
+function validarFormuario(e){
+    e.preventDefault();
 
-    HTMLResponse.appendChild(ul);
+    if(Class.value == '' || Order === '' || numberOfStudents === '' || active === '' || ListStudents === ''){
+        alert("todos los campos son obligatorios");
+        return;
+    }
+}
+
+const HTMLResponse = document.querySelector("#tabla-body");
+const tr = document.createElement('td');
+
+fetch(`${API_URL}/classrooms`).then((response) => response.json()//get por defecto
+    .then((classrooms) => {
+        for(let i = 0; i<classrooms.lenght; i++)
+        {
+            classrooms.forEach(classrooms => {
+                let elem = document.createElement('tr');
+                elem.appendChild(document.createTextNode(`${classrooms.Class} ${classrooms.Order} ${classrooms.numberOfStudents} ${classrooms.active} ${classrooms.ListStudents}`))
+                tr.appendChild(elem);
+            });
+        }
+    HTMLResponse.appendChild(tr);
+    
     // const tpl = classrooms.map(classrooms => `<li>${classrooms.Class} ||| ${classrooms.Order} ||| ${classrooms.numberOfStudents} ||| ${classrooms.active} ||| ${classrooms.ListStudents}</li>`);
     // HTMLResponse.innerHTML = `<ul>${tpl}</ul>`;
 }));
+
+// fetch("POST", `${API_URL}/classrooms/63e1ba8873c4a89a02cc3aad`)
+//     .then(response) =>
 
 
 
