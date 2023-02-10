@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>API REST-CRUD</title>
+        <link rel="stylesheet" href="estilos.css">
+    </head>
+    <body>
+        <div class="titulo">
+            <h1>API-REST CRUD con mongoDB y expressJS</h1>
+        </div>
+        <div class="contenedor">
+            <div class="div-formulario" id="divForm">
+                <h2>Formulario</h2>
+                <form action="#" id="formulario">
+                    <input type="text" id="class" placeholder="Nombre de la materia">
+                    <input type="text" id="order" placeholder="Número de al materia">
+                    <input type="text" id="numberofstudents" placeholder="Número de estudiantes">
+                    <input type="text" id="active" placeholder="Activo">
+                    <input type="text" id="liststudents" placeholder="# Lista de estudiantes">
+
+                    <button type="submit" id="agregar" onclick="createClassRoom()">Agregar</button>
+                </form>
+
+                <div class="div-listado">
+                    <h2>Lista de clases registradas</h2>
+                    <div class="div-clases">
+                        <table>
+                            <thead id="tabla-head">
+                                <tr>
+                                    <th>Materia</th>
+                                    <th>Orden</th>
+                                    <th>Numero de estudiantes</th>
+                                    <th>Activo</th>
+                                    <th>Lista de estudiantes</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tabla-body">
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        
+        
+        <script src="app.js" type="module"></script>
+        
+    </body>
+</html>
