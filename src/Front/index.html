@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>API REST-CRUD</title>
         <link rel="stylesheet" href="estilos.css">
+        
     </head>
     <body>
         <div class="titulo">
@@ -13,15 +14,34 @@
         <div class="contenedor">
             <div class="div-formulario" id="divForm">
                 <h2>Formulario</h2>
-                <form action="#" id="formulario">
-                    <input type="text" id="class" placeholder="Nombre de la materia">
-                    <input type="text" id="order" placeholder="Número de al materia">
-                    <input type="text" id="numberofstudents" placeholder="Número de estudiantes">
-                    <input type="text" id="active" placeholder="Activo">
-                    <input type="text" id="liststudents" placeholder="# Lista de estudiantes">
-
-                    <button type="submit" id="agregar" onclick="createClassRoom()">Agregar</button>
+                <form id="formulario">
+                    <div class="campo">
+                        <label>Matería: </label>
+                        <input type="text" name="class" placeholder="Nombre de la materia">
+                    </div>
+                    <div class="campo">
+                        <label>Número de la matería: </label>
+                        <input type="text" name="order" placeholder="Número de al materia">
+                    </div>
+                    <div class="campo">
+                        <label>Número de estudiantes inscritos: </label>
+                        <input type="text" name="numeroofstudents" placeholder="Número de estudiantes">
+                    </div>
+                    <div class="campo">
+                        <label>Estatus(Activo/Inactivo): </label>
+                        <input type="text" name="active" placeholder="Activo">
+                    </div>
+                    <div class="campo">
+                        <label>Lista de estudiantes: </label>
+                        <input type="text" name="liststudents" placeholder="# Lista de estudiantes">
+                    </div>
+                    
                 </form>
+                <div class="div-boton">
+                    <button id="agregar" type="button" onclick="createClassRoom()">Agregar</button>
+                </div>
+
+                <span id="alert"></span>
 
                 <div class="div-listado">
                     <h2>Lista de clases registradas</h2>
@@ -47,7 +67,7 @@
         </div>
         
         
-        <script src="app.js" type="module"></script>
         
+        <script src="app.js"></script>
     </body>
 </html>

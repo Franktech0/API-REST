@@ -52,3 +52,10 @@ input, button{
     margin: 10px;
     font-size: 15px;
 }
+span{
+    color: red;
+    font-size: 18px;
+    font-weight: bolder;
+    text-align: center;
+    display: block;
+}
