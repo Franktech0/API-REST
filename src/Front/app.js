@@ -166,4 +166,6 @@ const deleteClassroom = (orden) => {
         getClassrooms();
     })
 }
-
+function cancelar(){
+    document.querySelector("#editar").reset();
+}
