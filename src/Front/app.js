@@ -12,7 +12,8 @@ const getClassrooms = () => {
     fetch(`${API_URL}/classrooms`)
     .then(response => response.json())
     .catch(error => {
-        alert("¡Algo salio mal!" + "\nHubo un problema al cargar los datos de la materia");
+        alert("¡Algo salio mal!" + "\nHubo un problema al cargar los datos de la materia" 
+        +"\n\nSe recomienda recargar la pagina");
     })
     .then(data =>{
         classrooms = data;
@@ -37,7 +38,7 @@ const renderResult = (classrooms) =>{
                 <td>${classrooms.ListStudents}</td>
                 <td>
                     <a href= "#edit" onclick ="editClass(${classrooms.Order})">Editar</a>
-                    <button class="btn-no" type:"button">Eliminar</button>
+                    <button class="btn-no" type:"button" onclick="deleteClassroom(${classrooms.Order})">Eliminar</button>
                 </td>
                 
             </tr>`
@@ -144,46 +145,25 @@ const updateClass = () =>{
 
 }
 
+const deleteClassroom = (orden) => {
 
+    let ClassR = {};
+    classrooms.filter(clas => {
+        if(clas.Order == orden){
+            ClassR = clas;
+        }
+    });
 
+    fetch(`${API_URL}/classrooms/${ClassR._id}`, {
+        method: 'DELETE'
+    })
+    .then(res => res.json())
+    .catch(error => {
+        alert("Error, no se pudo borrar el registroo \n\n" + error);
+    })
+    .then(response => {
+        alert("Se ha eliminado correctamente el registro");
+        getClassrooms();
+    })
+}
 
-
-// formulario.addEventListener('submit', validarFormuario);
-
-// function validarFormuario(e){
-//     e.preventDefault();
-
-//     if(Class.value == '' || Order === '' || numberOfStudents === '' || active === '' || ListStudents === ''){
-//         alert("todos los campos son obligatorios");
-//         return;
-//     }
-// }
-
-
-
-
-
-
-
-
-// fetch("POST", `${API_URL}/classrooms/63e1ba8873c4a89a02cc3aad`)
-//     .then(response) =>
-
-
-
-// const xrh = new XMLHttpRequest();
-
-// function onRequestHandler(){
-//     if(this.readyState === 4 && this.status === 200){
-//         //console.log(this.response)
-//         const data = JSON.parse(this.response);
-//         const HTMLResponse = document.querySelector("#app");
-
-//         const tpl = data.map((classrooms) => `<li>${classrooms.Class} ||| ${classrooms.Order} ||| ${classrooms.numberOfStudents} ||| ${classrooms.active} ||| ${classrooms.ListStudents}</li>`);
-//         HTMLResponse.innerHTML = `<ul>${tpl}</ul>`
-
-//     }
-// }
-// xrh.addEventListener("load", onRequestHandler);
-// xrh.open('GET', `${API_URL}classrooms/`);
-// xrh.send();
