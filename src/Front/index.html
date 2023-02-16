@@ -1,121 +1,55 @@
 <!DOCTYPE html>
-<html lang="es">
+<html>
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>API REST-CRUD</title>
-        <link rel="stylesheet" href="estilos.css">
-        
+        <link rel="stylesheet" href="estilosIndex.css">
         
     </head>
     <body>
-        
         <div class="titulo">
             <h1>API-REST CRUD con mongoDB y expressJS</h1>
         </div>
         <div class="contenedor">
-            
-            <div class="div-formulario" id="divForm">
-                <h2 class="form" id="title-form">Registrar nueva matería</h2>
-                <form id="formulario" class="form">
-                    <div class="campo">
-                        <label>Matería: </label>
-                        <input type="text" name="class" placeholder="Nombre de la materia">
-                    </div>
-                    <div class="campo">
-                        <label>Número de la matería: </label>
-                        <input type="text" name="order" placeholder="Número de al materia">
-                    </div>
-                    <div class="campo">
-                        <label>Número de estudiantes inscritos: </label>
-                        <input type="text" name="numeroofstudents" placeholder="Número de estudiantes">
-                    </div>
-                    <div class="campo">
-                        <label>Estatus(Activo = 1/Inactivo = 0): </label>
-                        <input type="text" name="active" placeholder="Activo">
-                    </div>
-                    <div class="campo">
-                        <label>Lista de estudiantes: </label>
-                        <input type="text" name="liststudents" placeholder="# Lista de estudiantes">
-                    </div>
-                    
-                </form>
-                <div id="div-boton" class="form">
-                    <button id="agregar" type="button" onclick="createClassRoom()">Agregar</button>
-                </div>
-                <span id="alert"></span>
+            <div class="subtitulo">
+                <h2>Bienvenido...</h2>
             </div>
+            <div class="textogen">
+                <div class="texto">
+                    <p>
+                        Este es el front end de un CRUD en nodeJS, expressJS, JS y
+                        MongoDB, para el back-end.
+                    </p>
+                </div>
+                <div class="texto">
+                    <p>
+                        Para la parte del front end se ocupo HTML, JS y CSS
+                    </p>
+                </div>
+                <div class="texto">
+                    <p>
+                        Para la integración de ambas partes se ocupo JS y fetch
+                    </p>
+                </div>
                 
-            
-            <div id="space"></div>
-            
-            <div class="div-listado">
-                <h2 id="title-tabla">Lista de clases registradas</h2>
-                <div class="div-clases">
-                    <table>
-                        <thead id="tabla-head">
-                            <tr>
-                                <th>Materia</th>
-                                <th>Orden</th>
-                                <th>Numero de estudiantes</th>
-                                <th>Activo</th>
-                                <th>Lista de estudiantes</th>
-                                <th>Acciones</th>
-                            </tr>
-                        </thead>
-                        <tbody id="tabla-body">
-                            
-                        </tbody>
-                    </table>
-                </div>
             </div>
-            <div id="space"></div>
-            
-            <div class="contenedor">
-                
-                <div id="formEdit">
-                    <div class="titulo-form-edit">
-                        <h2 id="edit">Editar</h2>
-                    </div>
-
-                    <form id="editar">
-                        <input type="hidden" id="ID">
-                        <div class="campo">
-                            <label>Matería: </label>
-                            <input type="text" id="nameclass" placeholder="Nombre de la materia">
-                        </div>
-                        <div class="campo">
-                            <label>Número de la matería: </label>
-                            <input type="text" disabled id="orderclass" placeholder="Número de al materia">
-                        </div>
-                        <div class="campo">
-                            <label>Número de estudiantes inscritos: </label>
-                            <input type="text" id="numberstudentsclass" placeholder="Número de estudiantes">
-                        </div>
-                        <div class="campo">
-                            <label>Estatus(Activo = 1/Inactivo = 0): </label>
-                            <input type="boleean" id="activeclass" placeholder="0 o 1">
-                        </div>
-                        <div class="campo">
-                            <label>Lista de estudiantes: </label>
-                            <input type="text" id="listclass" placeholder="# Lista de estudiantes">
-                        </div>
-                    </form>
-                    <div class="btn-actions">
-                        <button onclick="updateClass()">Guardar</button>
-                        <button onclick="cancelar()" class="btn-no">Cancelar</button>
-                    </div>
-                </div>
+            <div>
+                <p id="finaltxt">
+                    Finalmente para poder Registrar, Visualizar, Editar o Eliminar los datos
+                    podemos dar click sobre cualquiera de los dos botones de abajo:
+                    "Students" mostrara una lista de estudiantes, mientras que "Classroom" mostrara
+                    la lisa de las clases disponibles.
+                </p>
             </div>
-        
+            <div class="botones">
+                <a href="student.html" class="btn-neon" id="student">Students</a>
+                <a href="classroom.html" class="btn-neon" id="classroom">Classrooms</a>
+            </div>
         </div>
-        <script src="app.js"></script>
-        
-        <footer>
-            <div class="footer">
-                
-            </div>
+        <footer id="footer">
+
         </footer>
-        
+        <script src="index.js"></script>
     </body>
 </html>
