@@ -16,7 +16,7 @@ const getClassrooms = () => {
     })
     .then(data =>{
         classrooms = data;
-        console.log(data);
+        console.log(classrooms);
         renderResult(classrooms);
     })
 }
@@ -27,7 +27,7 @@ const classroomsList = document.querySelector("#tabla-body");
 const renderResult = (classrooms) =>{
     let listHTML = "";
     classrooms.forEach(classrooms => {
-        idclass = classrooms._id;
+        //idclass = classrooms._id;
         listHTML += `
             <tr>
                 <td>${classrooms.Class}</td>
@@ -36,12 +36,12 @@ const renderResult = (classrooms) =>{
                 <td>${classrooms.active}</td>
                 <td>${classrooms.ListStudents}</td>
                 <td>
-                    <button type="button" onclick="editClass(${idclass,json})})">Editar</button>
-                    <button type:"button">Eliminar</button>
+                    <a href= "#edit" onclick ="editClass(${classrooms.Order})">Editar</a>
+                    <button class="btn-no" type:"button">Eliminar</button>
                 </td>
                 
             </tr>`
-            console.log(typeof(classrooms._id));
+            
     })
     classroomsList.innerHTML = listHTML;
     
@@ -86,17 +86,59 @@ const createClassRoom = () =>{
     })
 }
 
-const editClass = (Cid) =>{
+const editClass = (orden) =>{
     //console.log(id);
     let ClassR = {};
     classrooms.filter(clas => {
-        if(clas._id == Cid){
+        if(clas.Order == orden){
             ClassR = clas;
         }
     });
-    console.log(classrooms);
-}
+    document.querySelector('#editar #ID').value = ClassR._id;
+    document.querySelector('#editar #nameclass').value = ClassR.Class;
+    document.querySelector('#editar #orderclass').value = ClassR.Order;
+    document.querySelector('#editar #numberstudentsclass').value = ClassR.numberOfStudents;
+    document.querySelector('#editar #activeclass').value = ClassR.active;
+    document.querySelector('#editar #listclass').value = ClassR.ListStudents;
 
+    console.log(ClassR);
+
+}
+const updateClass = () =>{
+    const classroom ={
+        Class: document.querySelector('#editar #nameclass').value,
+        Order: document.querySelector('#editar #orderclass').value,
+        numberOfStudents: document.querySelector('#editar #numberstudentsclass').value,
+        active: document.querySelector('#editar #activeclass').value,
+        ListStudents: document.querySelector('#editar #listclass').value,
+        Id: document.querySelector('#editar #ID').value,
+    }
+
+    if(!classroom.Class || !classroom.Order || !classroom.numberOfStudents 
+    || !classroom.active ||!classroom.ListStudents )
+    {
+        document.querySelector('#alert').innerHTML = "* Todos los campos son obligatorios";
+        return;
+    }
+    document.querySelector("#alert").innerHTML = '';
+
+    fetch(`${API_URL}/classrooms/${classroom.Id}`, {
+        method: 'PUT',
+        body: JSON.stringify(classroom),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    } )
+    .then(res => res.json())
+    .catch(error => {
+        alert("Error, No se pudo actualizar correctamente");
+    })
+    .then(response => {
+        alert("¡Actualización exitosa!");
+        getClassrooms();
+
+    })
+}
 
 
 

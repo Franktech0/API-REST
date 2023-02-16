@@ -5,52 +5,118 @@
     font-family: sans-serif;
 
 }
-body{
-    background-color: beige;
+
+.contenedor{
+    background-color: #e5e7e9;
+    width: 1000px;
+    display: block;
+    margin: 0 auto;
+    margin-top: 20px;
+    border-radius: 10px;
 }
 .titulo{
-    padding-top: 40px;
+    color: rgb(255, 255, 255);
+    padding-top: 30px;
     font-family: sans-serif;
-    font-weight: bold;
+    font-weight: bolder;
+    font-size: 20px;
     padding-bottom: 20px;
     width: 100%;
-    height: 100%;
+    height: 100px;
     display: flex;
     justify-content: center;
-    align-items: center;
     font-weight: bold;
+    background-color: #37a594;
+    text-align: left;
+
 }
 .titulo h1{
     font-weight: 300;
 }
-table, td, th{
-    border: 2px solid black;
-    border-collapse: collapse;
+td, th{
+    padding: 0px;
+    
 
 }
 table{
     width: 100%;
+    background-color: white;
+    text-align: right;
     height: 30px;
+    border: solid 1px gray;
+    border-collapse: collapse;
 }
 td, th{
+    
     padding: 10px;
     text-align: center;
 }
-.div-clases{
-    margin: 10px;
-    margin-top: 20px;
+td{
+    border-left: solid 1px gray;
 }
-h2{
-    padding-left: 30px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+.div-clases{
+    width: 900px;
+    margin: 0 auto;
+}
+#title-form{
+    padding-top: 15px;
+    padding-bottom: 60px;
+    height: 50px;
+    width: 500px;
+    display: block;
+    margin: 0 auto;
+    background-color: rgb(235, 227, 227);
+    text-align: center;
+}
+#div-boton{
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    background-color: rgb(235, 227, 227);
+    height: 60px;
+    width: 500px;
+    padding-top: 0;
+    
+}
+input{
+    width: auto;
+    border: none;
+    border-radius: 5px;
+}
+label{
+    text-align: left;
+    padding-left: 10px;
 }
 input, button{
-    align-items: center;
+    
     margin: 0 auto;
     padding: 10px;
     margin: 10px;
     font-size: 15px;
+    cursor: text black;  
+}
+button, a{
+    cursor: pointer;
+    width: 150px;
+    background-color: #1ceb83;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    font-family: sans-serif;
+    font-weight: bold;
+    text-decoration: none;
+    color: black;
+}
+button:hover{
+    background-color: #37a594;
+    color: white;
+}
+.btn-no{
+    background-color: #ff6573;
+}
+.btn-no:hover{
+    background-color: red;
+    color: white;
 }
 span{
     color: red;
@@ -58,4 +124,71 @@ span{
     font-weight: bolder;
     text-align: center;
     display: block;
+}
+.form{
+    background-color: #e5e7e9;
+    display: block;
+    margin: 0 auto;
+    width: 500px;
+    height: 300px;
+    padding: 0;
+    
+
+}
+.footer{
+    background-color: #37a594;
+    height: 100px;
+    margin-top: 20px;
+    width: 100%;
+}
+.div-listado{
+    
+    padding-bottom: 10px;
+    background-color: white;
+}
+h2{
+    font-family: sans-serif;
+    font-size: 22px;
+    color: #a53545;
+    text-align: center;
+}
+#title-tabla{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+#formEdit{
+    padding-top: 10px;
+    width: 100%;
+    height: 100%;
+    margin-top: 20px;
+    display: block;
+    text-align: center;
+}
+#edit{
+    padding-bottom: 20px;
+}
+a{
+    display: block;
+    background-color: #1ceb83;
+    width: 150px;
+    padding: 10px 30px;
+    border-radius: 10px;
+    margin-left: 15px;
+}
+a:hover{
+    background-color: #37a594;
+    color: white;
+}
+#space{
+    background-color: white;
+    width: 100%;
+    height: 20px;
+}
+thead{
+    background-color: #da9b49;
+    color: white;
+    border-bottom: solid 5px #4d381d;
+}
+tr:nth-child(even){
+    background-color: #ddd;
 }
