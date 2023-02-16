@@ -2,6 +2,7 @@
 const API_URL = "http://localhost:9000/api/";
 var classrooms = [];
 var idclass = [];
+var validar = 0;
 
 //esperamos hasta que el dom carge el contenido para mandar a traer los datos BD
 window.addEventListener('DOMContentLoaded', ()=>{
@@ -58,7 +59,7 @@ const createClassRoom = () =>{
         return;
     }
     document.querySelector("#alert").innerHTML = '';
-
+    
     const classroom = {
         Class: formData.get("class"),
         Order: formData.get("order"),
@@ -67,26 +68,35 @@ const createClassRoom = () =>{
         ListStudents: formData.get("liststudents"),
     }
     console.log(classroom);
-
-    fetch(`${API_URL}/classrooms`, {
-        method: 'POST',
-        body: JSON.stringify(classroom),
-        headers: {
-            'Content-Type': 'application/json'
+    
+    classrooms.filter(clas => {
+        if(clas.Order == classroom.Order){
+            alert("¡Error!" +"\n\nNo se puede tener 2 Materías con el mismo número de orden");
+            validar = 1;
         }
-    })
-    .then(res => res.json())
-    .catch(e => {
-        alert("Algo salio mal! => " + e);
-    })
-    .then(response => {
-        console.log(response);
-        alert("El nuevo registro se ha creado con exito!")
-        getClassrooms();
+    });
+    if(validar != 1)
+    {
+        fetch(`${API_URL}/classrooms`, {
+            method: 'POST',
+            body: JSON.stringify(classroom),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(res => res.json())
+        .catch(e => {
+            alert("Algo salio mal! => " + e);
+        })
+        .then(response => {
+            console.log(response);
+            alert("El nuevo registro se ha creado con exito!")
+            getClassrooms();
 
-    })
+        })
+    }
     document.querySelector("#formulario").reset();
-
+    validar = 0;
 }
 
 const editClass = (orden) =>{
@@ -159,7 +169,7 @@ const deleteClassroom = (orden) => {
     })
     .then(res => res.json())
     .catch(error => {
-        alert("Error, no se pudo borrar el registroo \n\n" + error);
+        alert("Error, no se pudo borrar el registro" + error);
     })
     .then(response => {
         alert("Se ha eliminado correctamente el registro");

@@ -65,14 +65,12 @@ td{
     width: 500px;
     display: block;
     margin: 0 auto;
-    background-color: rgb(235, 227, 227);
     text-align: center;
 }
 #div-boton{
     display: block;
     margin: 0 auto;
     text-align: center;
-    background-color: rgb(235, 227, 227);
     height: 60px;
     width: 500px;
     padding-top: 0;
