@@ -77,13 +77,15 @@ const createClassRoom = () =>{
     .then(res => res.json())
     .catch(e => {
         alert("Algo salio mal! => " + e);
-        document.querySelector("#formulario").reset();
     })
     .then(response => {
         console.log(response);
         alert("El nuevo registro se ha creado con exito!")
         getClassrooms();
+
     })
+    document.querySelector("#formulario").reset();
+
 }
 
 const editClass = (orden) =>{
@@ -138,6 +140,8 @@ const updateClass = () =>{
         getClassrooms();
 
     })
+    document.querySelector("#editar").reset();
+
 }
 
 
