@@ -29,6 +29,7 @@
     background-color: #37a594;
     text-align: left;
     padding-left: 50px;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.6);
 
 }
 .titulo h1{
@@ -36,8 +37,6 @@
 }
 td, th{
     padding: 0px;
-    
-
 }
 table{
     width: 100%;
@@ -48,7 +47,6 @@ table{
     border-collapse: collapse;
 }
 td, th{
-    
     padding: 10px;
     text-align: center;
 }
@@ -190,4 +188,7 @@ thead{
 }
 tr:nth-child(even){
     background-color: #ddd;
+}
+#acciones{
+    width: 202px;
 }

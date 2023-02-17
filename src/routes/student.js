@@ -32,9 +32,9 @@ router.get('/students/:id', (req, res) =>{
 //actulizar usuario
 router.put('/students/:id', (req, res) =>{
     const { id } = req.params;
-    const { name, age, active} = req.body;
+    const { name, age, active, Order } = req.body;
     StudentSchema
-        .updateOne({ _id: id },{ $set: {name, age, active} }) //buscamos por id
+        .updateOne({ _id: id },{ $set: {name, age, active, Order} }) //buscamos por id
         .then((data)=>res.json(data))
         .catch((error)=>res.json({message: error}));
 });

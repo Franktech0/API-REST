@@ -1,6 +1,6 @@
 //URL de la API local
 const API_URL = "http://localhost:9000/api/";
-var classrooms = [];
+var students = [];
 var idclass = [];
 var validar = 0;
 
@@ -10,36 +10,35 @@ window.addEventListener('DOMContentLoaded', ()=>{
 })
 //recuperamos todos los datos de la bd
 const getClassrooms = () => {
-    fetch(`${API_URL}/classrooms`)
+    fetch(`${API_URL}/students`)
     .then(response => response.json())
     .catch(error => {
         alert("¡Algo salio mal!" + "\nHubo un problema al cargar los datos de la materia" 
         +"\n\nSe recomienda recargar la pagina");
     })
     .then(data =>{
-        classrooms = data;
-        console.log(classrooms);
-        renderResult(classrooms);
+        students = data;
+        console.log(students);
+        renderResult(students);
     })
 }
-console.log(classrooms);
+console.log(students);
 
 const classroomsList = document.querySelector("#tabla-body");
 //mostramos en la tabla los datos
-const renderResult = (classrooms) =>{
+const renderResult = (students) =>{
     let listHTML = "";
-    classrooms.forEach(classrooms => {
+    students.forEach(student => {
         //idclass = classrooms._id;
         listHTML += `
             <tr>
-                <td>${classrooms.Class}</td>
-                <td>${classrooms.Order}</td>
-                <td>${classrooms.numberOfStudents}</td>
-                <td>${classrooms.active}</td>
-                <td>${classrooms.ListStudents}</td>
+                <td>${student.name}</td>
+                <td>${student.age}</td>
+                <td>${student.active}</td>
+                <td>${student.Order}</td>
                 <td>
-                    <a href= "#edit" onclick ="editClass(${classrooms.Order})">Editar</a>
-                    <button class="btn-no" type:"button" onclick="deleteClassroom(${classrooms.Order})">Eliminar</button>
+                    <a href= "#edit" id="btn-editar" onclick ="editClass(${student.Order})">Editar</a>
+                    <button class="btn-no" type:"button" onclick="deleteClassroom(${student.Order})">Eliminar</button>
                 </td>
                 
             </tr>`
@@ -52,34 +51,33 @@ const renderResult = (classrooms) =>{
 const createClassRoom = () =>{
     const formData = new FormData(document.querySelector("#formulario"));
     
-    if(!formData.get('class').length || !formData.get('order').length || !formData.get('numeroofstudents').length 
-    || !formData.get('active').length ||!formData.get('liststudents').length )
+    if(!formData.get('name').length || !formData.get('age').length || !formData.get('active').length 
+    || !formData.get('order').length )
     {
         document.querySelector('#alert').innerHTML = "* Todos los campos son obligatorios";
         return;
     }
     document.querySelector("#alert").innerHTML = '';
     
-    const classroom = {
-        Class: formData.get("class"),
-        Order: formData.get("order"),
-        numberOfStudents: formData.get("numeroofstudents"),
+    const Astudent = {
+        name: formData.get("name"),
+        age: formData.get("age"),
         active: formData.get("active"),
-        ListStudents: formData.get("liststudents"),
+        Order: formData.get("order"),
     }
-    console.log(classroom);
+    console.log(Astudent);
     
-    classrooms.filter(clas => {
-        if(clas.Order == classroom.Order){
+    students.filter(stud => {
+        if(stud.Order == Astudent.Order){
             alert("¡Error!" +"\n\nNo se puede tener 2 Materías con el mismo número de orden");
             validar = 1;
         }
     });
     if(validar != 1)
     {
-        fetch(`${API_URL}/classrooms`, {
+        fetch(`${API_URL}/students`, {
             method: 'POST',
-            body: JSON.stringify(classroom),
+            body: JSON.stringify(Astudent),
             headers: {
                 'Content-Type': 'application/json'
             }
@@ -101,43 +99,42 @@ const createClassRoom = () =>{
 
 const editClass = (orden) =>{
     //console.log(id);
-    let ClassR = {};
-    classrooms.filter(clas => {
-        if(clas.Order == orden){
-            ClassR = clas;
+    let NewStudent = {};
+    students.filter(std => {
+        if(std.Order == orden){
+            NewStudent = std;
         }
     });
-    document.querySelector('#editar #ID').value = ClassR._id;
-    document.querySelector('#editar #nameclass').value = ClassR.Class;
-    document.querySelector('#editar #orderclass').value = ClassR.Order;
-    document.querySelector('#editar #numberstudentsclass').value = ClassR.numberOfStudents;
-    document.querySelector('#editar #activeclass').value = ClassR.active;
-    document.querySelector('#editar #listclass').value = ClassR.ListStudents;
+    document.querySelector('#editar #ID').value = NewStudent._id;
+    document.querySelector('#editar #name').value = NewStudent.name;
+    document.querySelector('#editar #age').value = NewStudent.age;
+    document.querySelector('#editar #active').value = NewStudent.active;
+    document.querySelector('#editar #order').value = NewStudent.Order;
+    
 
-    console.log(ClassR);
+    console.log(NewStudent);
 
 }
 const updateClass = () =>{
-    const classroom ={
-        Class: document.querySelector('#editar #nameclass').value,
-        Order: document.querySelector('#editar #orderclass').value,
-        numberOfStudents: document.querySelector('#editar #numberstudentsclass').value,
-        active: document.querySelector('#editar #activeclass').value,
-        ListStudents: document.querySelector('#editar #listclass').value,
+    const NStudent ={
+        name: document.querySelector('#editar #name').value,
+        age: document.querySelector('#editar #age').value,
+        active: document.querySelector('#editar #active').value,
+        order: document.querySelector('#editar #order').value,
         Id: document.querySelector('#editar #ID').value,
     }
 
-    if(!classroom.Class || !classroom.Order || !classroom.numberOfStudents 
-    || !classroom.active ||!classroom.ListStudents )
+    if(!NStudent.name || !NStudent.age || !NStudent.active 
+    || !NStudent.order)
     {
         document.querySelector('#alert').innerHTML = "* Todos los campos son obligatorios";
         return;
     }
     document.querySelector("#alert").innerHTML = '';
 
-    fetch(`${API_URL}/classrooms/${classroom.Id}`, {
+    fetch(`${API_URL}/students/${NStudent.Id}`, {
         method: 'PUT',
-        body: JSON.stringify(classroom),
+        body: JSON.stringify(NStudent),
         headers: {
             'Content-Type': 'application/json'
         }
@@ -157,14 +154,14 @@ const updateClass = () =>{
 
 const deleteClassroom = (orden) => {
 
-    let ClassR = {};
-    classrooms.filter(clas => {
-        if(clas.Order == orden){
-            ClassR = clas;
+    let NewStudent = {};
+    students.filter(std => {
+        if(std.Order == orden){
+            NewStudent = std;
         }
     });
 
-    fetch(`${API_URL}/classrooms/${ClassR._id}`, {
+    fetch(`${API_URL}/students/${NewStudent._id}`, {
         method: 'DELETE'
     })
     .then(res => res.json())

@@ -19,25 +19,22 @@
                 <h2 class="form" id="title-form">Registrar nueva matería</h2>
                 <form id="formulario" class="form">
                     <div class="campo">
-                        <label>Matería: </label>
-                        <input type="text" name="class" placeholder="Nombre de la materia">
+                        <label>Nombre: </label>
+                        <input type="text" name="name" placeholder="Nombre completo">
                     </div>
                     <div class="campo">
-                        <label>Número de la matería: </label>
-                        <input type="text" name="order" placeholder="Número de al materia">
-                    </div>
-                    <div class="campo">
-                        <label>Número de estudiantes inscritos: </label>
-                        <input type="text" name="numeroofstudents" placeholder="Número de estudiantes">
+                        <label>Edad: </label>
+                        <input type="text" name="age" placeholder="Edad">
                     </div>
                     <div class="campo">
                         <label>Estatus(Activo = 1/Inactivo = 0): </label>
                         <input type="text" name="active" placeholder="Activo">
                     </div>
                     <div class="campo">
-                        <label>Lista de estudiantes: </label>
-                        <input type="text" name="liststudents" placeholder="# Lista de estudiantes">
+                        <label>Orden: </label>
+                        <input type="text" name="order" placeholder="número de orden">
                     </div>
+                    
                     
                 </form>
                 <div id="div-boton" class="form">
@@ -55,12 +52,11 @@
                     <table>
                         <thead id="tabla-head">
                             <tr>
-                                <th>Materia</th>
-                                <th>Orden</th>
-                                <th>Numero de estudiantes</th>
+                                <th>Nombre</th>
+                                <th>Edad</th>
                                 <th>Activo</th>
-                                <th>Lista de estudiantes</th>
-                                <th>Acciones</th>
+                                <th>Orden</th>
+                                <th id="acciones">Acciones</th>
                             </tr>
                         </thead>
                         <tbody id="tabla-body">
@@ -80,25 +76,22 @@
 
                     <form id="editar">
                         <input type="hidden" id="ID">
+                        
                         <div class="campo">
-                            <label>Matería: </label>
-                            <input type="text" id="nameclass" placeholder="Nombre de la materia">
+                            <label>Nombre completo: </label>
+                            <input type="text" id="name" placeholder="Nombre completo">
                         </div>
                         <div class="campo">
-                            <label>Número de la matería: </label>
-                            <input type="text" disabled id="orderclass" placeholder="Número de al materia">
-                        </div>
-                        <div class="campo">
-                            <label>Número de estudiantes inscritos: </label>
-                            <input type="text" id="numberstudentsclass" placeholder="Número de estudiantes">
+                            <label>Edad: </label>
+                            <input type="text" id="age" placeholder="Edad">
                         </div>
                         <div class="campo">
                             <label>Estatus(Activo = 1/Inactivo = 0): </label>
-                            <input type="boleean" id="activeclass" placeholder="0 o 1">
+                            <input type="boleean" id="active" placeholder="true or flase">
                         </div>
                         <div class="campo">
-                            <label>Lista de estudiantes: </label>
-                            <input type="text" id="listclass" placeholder="# Lista de estudiantes">
+                            <label>Orden: </label>
+                            <input type="text" id="order" disabled placeholder="número de orden">
                         </div>
                     </form>
                     <div class="btn-actions">
@@ -109,7 +102,7 @@
             </div>
         
         </div>
-        <script src="app.js"></script>
+        <script src="student.js"></script>
         
         <footer>
             <div class="footer">

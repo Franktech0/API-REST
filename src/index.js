@@ -2,7 +2,6 @@
 const express = require('express'); //cargamos el modulo expressJS
 const mogoose = require("mongoose");//cargamos el modulo mongoose para la conexxion a ala base de datos
 require("dotenv").config();
-const userRoutes = require("./routes/user");
 const studentRoutes = require("./routes/student");
 const classRoomRoutes = require("./routes/classroom");
 const cors = require('cors');
@@ -18,7 +17,6 @@ app.use(cors());//permitimos cualquir origen
 
 //middleware //codigo antes de abrir el cuerpo del api
 app.use(express.json());
-app.use("/api", userRoutes);
 app.use("/api", studentRoutes);
 app.use("/api", classRoomRoutes);
 

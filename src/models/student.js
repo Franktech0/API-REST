@@ -12,6 +12,10 @@ const StudentSchema = mongoose.Schema({
     active: {
         type: Boolean,
         required: true
+    },
+    Order: {
+        type: Number,
+        required: true
     }
 });
 
