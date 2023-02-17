@@ -23,8 +23,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
 
 /**Esta función permite recuperar todos los datos de la bd, cuando
  * no se especifica el metodo en fetch, se manda con GET por defecto
- * @type {function getClassrooms() { fetch(API_URL, response)
- * }}
+ * @type {function}
 */
 const getClassrooms = () => {
     fetch(`${API_URL}/classrooms`)
@@ -48,7 +47,6 @@ const getClassrooms = () => {
 /**
  * Esta es una constante que recibe las propiedades del body de una tabla
  * que esta en HTML a traves del metodo document.querySelector()
- * @type {const name = document.querySelector(id o name del tag-hmtl)}
  */
 const classroomsList = document.querySelector("#tabla-body");
 

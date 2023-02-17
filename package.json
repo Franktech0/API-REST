@@ -1,10 +1,10 @@
 {
   "name": "crud-api",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon src/index.js"
+    "start": "nodemon src/index.js",
+    "docs": "jsdoc -c jsdoc.json"
   },
   "keywords": [],
   "author": "",
@@ -16,6 +16,16 @@
     "mongoose": "^6.9.0"
   },
   "devDependencies": {
+    "jsdoc": "^4.0.1",
     "nodemon": "^2.0.20"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Franktech0/API-REST.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Franktech0/API-REST/issues"
+  },
+  "homepage": "https://github.com/Franktech0/API-REST#readme",
+  "description": ""
 }
